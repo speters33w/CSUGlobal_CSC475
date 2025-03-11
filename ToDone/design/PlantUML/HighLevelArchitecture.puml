@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+package "Presentation Layer" {
+  [UI Components]
+  [ViewModels]
+}
+
+package "Domain Layer" {
+  [Use Cases]
+  [Entities]
+}
+
+package "Data Layer" {
+  [Repositories]
+  [Local Data Source]
+}
+
+[UI Components] --> [ViewModels]
+[ViewModels] --> [Use Cases]
+[Use Cases] --> [Entities]
+[Use Cases] --> [Repositories]
+[Repositories] --> [Local Data Source]
+@enduml

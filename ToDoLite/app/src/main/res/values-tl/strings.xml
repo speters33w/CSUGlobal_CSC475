@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Listahan ng gagawan lite</string>
+    <string name="enter_task">Maglagay ng gawain</string>
+    <string name="add_task">Dagdagan ang gawain</string>
+    <string name="delete_completed_tasks">Tanggalin ang tapos na</string>
+</resources>

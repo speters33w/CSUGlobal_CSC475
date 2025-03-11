@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Photo Viewer</string>
+    <string name="photo_thumbnail">Photo thumbnail</string>
+    <string name="photo_detail">Photo detail</string>">
+</resources>

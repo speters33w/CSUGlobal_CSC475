@@ -1,0 +1,84 @@
+@startuml PhotoViewer Application Structure
+left to right direction
+' Class definitions
+class MainActivity {
+  - recyclerView: RecyclerView
+  - adapter: PhotoAdapter
+  - permissions: Array<String>
+  + onCreate(savedInstanceState: Bundle)
+  + onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray)
+  - loadPhotos()
+}
+
+class PhotoAdapter {
+  - photos: List<String>
+  + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+  + onBindViewHolder(holder: ViewHolder, position: Int)
+  + getItemCount(): Int
+  + class ViewHolder
+}
+
+class FullscreenImageActivity {
+  - viewPagerWrapper: ReverseSwipeViewPagerWrapper
+  - EXTRA_PHOTOS: String
+  - EXTRA_POSITION: String
+  + onCreate(savedInstanceState: Bundle)
+}
+
+class FullscreenImageAdapter {
+  - photos: List<String>
+  + onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder
+  + onBindViewHolder(holder: ImageViewHolder, position: Int)
+  + getItemCount(): Int
+  + class ImageViewHolder
+}
+
+class ReverseSwipeViewPagerWrapper {
+  - viewPager2: ViewPager2
+  + constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
+  - reverseScrollDirection()
+}
+
+class PhotoContainerLayout {
+  + constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
+  + performClick(): Boolean
+}
+
+' External Android components
+'class AppCompatActivity
+'class RecyclerView
+'class ViewPager2
+'class FrameLayout
+'class RecyclerView.Adapter
+'class RecyclerView.ViewHolder
+
+' Inheritance relationships
+MainActivity --|> AppCompatActivity
+FullscreenImageActivity --|> AppCompatActivity
+PhotoAdapter --|> RecyclerView.Adapter
+FullscreenImageAdapter --|> RecyclerView.Adapter
+ReverseSwipeViewPagerWrapper --|> FrameLayout
+PhotoContainerLayout --|> FrameLayout
+
+' Composition relationships
+MainActivity o-- PhotoAdapter : uses >
+FullscreenImageActivity o-- ReverseSwipeViewPagerWrapper : uses >
+FullscreenImageActivity o-- FullscreenImageAdapter : uses >
+ReverseSwipeViewPagerWrapper o-- ViewPager2 : contains >
+
+' Navigation flow
+MainActivity ..> FullscreenImageActivity : opens >
+
+' Layout relationships
+note right of MainActivity : "Uses activity_main.xml\nwith RecyclerView"
+note right of PhotoAdapter : "Uses item_photo.xml\nfor thumbnails"
+note right of FullscreenImageActivity : "Uses activity_fullscreen_image.xml"
+note right of FullscreenImageAdapter : "Uses item_fullscreen_image.xml"
+note right of ReverseSwipeViewPagerWrapper : "Uses layout_reverse_viewpager.xml"
+
+' Data flow
+note bottom of MainActivity : "Loads photos from MediaStore"
+note bottom of PhotoAdapter : "Displays photo thumbnails"
+note bottom of FullscreenImageAdapter : "Displays fullscreen photos"
+
+@enduml

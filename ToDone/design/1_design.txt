@@ -1,0 +1,34 @@
+ToDo application
+
+Above the Main screen there will be a tabbed interface at the top, ToDo, Done, and settings. The settings tab will be labeled with a gear icon.
+The main window will be a list of the titles of the parent taks. They will be disclosure elements, when the disclosure triangle is tapped they will disclose child tasks for the main task tapped only. The list will be in priority order. The priority of each task will change color from green to yellow to orange to red based on an internal formula based on inmportance of the task, how long it has been stagnant, how long it is expected to take, and when it is due. The priority of the task will also be dtermined by internal formula.
+There will be a bottom navigation bar with three icons, they are:
+    On the left side will be a blue circular icon with an up arrow inside that opens a dialog box with details of the selected task or sub-task.
+    In the center will be a green circular icon with a plus symbol inside that creates a new task if a parent task or none is selected on the screen, and creates a new child task in the parent task group of the selected child task is selected.
+    On the right side will be a red circular icon with a less-than symbol that exits the application.
+Each task will have the following:
+A specific start date, or "Now", or "Whenever".
+An estimated time to complete in hours that will allow up to two digits after the decimal point.
+A specific due date, or "Today", or "Whenever".
+An descriptive field where a longer description of the task can be entered.
+A "Day off task" or "Doesn't matter" value that will be boolean in the code.
+A field where a user can enter materials required. 
+Each child task will have the same options as each parent class. Materials required will be added to the parent class at creation, or on editing but if the user deletes them from the parent class they will not update the child class and the child class will not re-sync to the parent class unless the user edits the child class.
+Each grandchild class will have individual characteristics like the child class.
+
+The user will have the following properties:
+Normal days off (default Saturday and Sunday)
+Normal work schedule (Default 0700-1700)
+Normal sleep schedule (Default 2100-0600)
+
+These values will be used in the priorities calculation.
+
+Basic colors (RGB) will be:
+No priority (postponed) - Basic blue 0000FF
+Overdue but deferred - 808080
+Low priority Basic green 008000
+Moderate priority Basic yellow FFFF00
+High priority Basic orange FFA500
+Very high priority Basic red FF000
+
+▶ ▼

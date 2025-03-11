@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+class Task {
+  +id: Integer
+  +title: String
+  +startDate: Date
+  +estimatedTime: Duration.MINUTES
+  +dueDate: kotlinx.datetime
+  +description: String
+  +isDayOffTask: Boolean
+  +materialsRequired: List<String>
+  +priority: TaskPriority
+  +childTasks: List<Task>
+}
+
+enum TaskPriority {
+  NONE
+  LOW
+  MODERATE
+  HIGH
+  CRITICAL
+}
+
+Task "1" *-- "0..*" Task : contains
+Task -- TaskPriority
+@enduml

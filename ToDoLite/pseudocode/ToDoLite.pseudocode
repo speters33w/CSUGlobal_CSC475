@@ -1,0 +1,108 @@
+// MainActivity.kt
+class MainActivity:
+    // Initialize variables
+    DatabaseHelper dbHelper
+    ListView todoList
+    TodoAdapter adapter
+    List<ToDo> todos
+    EditText taskInput
+
+    function onCreate(savedInstanceState):
+        Set up the layout
+        Initialize UI components (todoList, addButton, taskInput, deleteCompletedButton)
+        
+        Load todos from database
+        Create and set adapter for todoList
+        
+        Hide taskInput initially
+        
+        Set click listener for addButton:
+            Show taskInput
+            Focus on taskInput
+            Show keyboard
+        
+        Set key listener for taskInput:
+            If Enter key is pressed:
+                Call addTask()
+        
+        Set item click listener for todoList:
+            Toggle checkbox
+            Update todo completion status in database
+            Refresh adapter
+        
+        Set long click listener for todoList:
+            Delete selected todo from database
+            Remove todo from list
+            Refresh adapter
+        
+        Set click listener for deleteCompletedButton:
+            Call deleteCompletedTasks()
+
+    function addTask():
+        If task input is not empty:
+            Create new ToDo object
+            Add to database
+            Add to todos list
+            Refresh adapter
+            Clear input
+            Hide keyboard
+            Hide taskInput
+
+    function hideKeyboard(view)
+    function showKeyboard(view)
+
+    function deleteCompletedTasks():
+        Get all completed tasks
+        For each completed task:
+            Delete from database
+        Remove completed tasks from todos list
+        Refresh adapter
+
+// DatabaseHelper.kt
+class DatabaseHelper:
+    // Constants for database and table names, column names
+
+    function onCreate(database):
+        Create todos table with columns: id, task, is_completed
+
+    function onUpgrade(database, oldVersion, newVersion):
+        Drop existing table if exists
+        Call onCreate()
+
+    function addToDo(todo):
+        Insert new todo into database
+        Return inserted row id
+
+    function updateToDo(todo):
+        Update existing todo in database
+
+    function deleteToDo(todoId):
+        Delete todo from database by id
+
+    function getAllToDos():
+        Query database for all todos
+        Create list of ToDo objects from query results
+        Return list of todos
+
+// ToDo.kt
+class ToDo:
+    // Properties
+    Long id
+    String task
+    Boolean isCompleted
+
+    // Constructor
+    constructor(id, task, isCompleted)
+
+// TodoAdapter.kt (inferred)
+class TodoAdapter:
+    // Properties
+    Context context
+    List<ToDo> todos
+
+    function getView(position, convertView, parent):
+        Inflate or reuse view for todo item
+        Set task text
+        Set checkbox state based on todo completion status
+        Return view
+        

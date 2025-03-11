@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Việc Cần Làm Lite</string>
+    <string name="enter_task">Nhập một nhiệm vụ</string>
+    <string name="add_task">Thêm nhiệm vụ</string>
+    <string name="delete_completed_tasks">Xóa việc đã xong</string>
+</resources>
