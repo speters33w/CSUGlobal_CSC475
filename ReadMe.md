@@ -11,9 +11,9 @@ Create a simple Android application that displays a "Hello, Android!" message on
 Please ensure that your submission includes the following components:
 
 - [Source code file(s)](./HelloAndroidCalculator) containing the program implementation.
-- Include [screenshots](./HelloAndroidCalculator/app/src/main/res/raw/screenshots.png) showcasing the successful execution of the program.
+- Include [screenshots]((./HelloAndroidCalculator/Screenshots/screenshots.png) showcasing the successful execution of the program.
 
-![](./HelloAndroidCalculator/app/src/main/res/raw/screenshots.png)
+![](./HelloAndroidCalculator/Screenshots/screenshots.png)
 
 ### Module 2: Portfolio Project Milestone
 
@@ -26,9 +26,9 @@ Develop a to-do list application that allows users to add, delete, and mark task
 Please ensure that your submission includes the following components:
 
 - [Source code file(s)](./ToDoLite/) containing the program implementation.
-- include [screenshots](./ToDoLite/app/src/main/res/raw/screenshots.png) showcasing the successful execution of the program. Compile and submit your [pseudocode](./ToDoLite/pseudocode/ToDoLite.pseudocode), source code, and screenshots of the application executing the application.
+- include [screenshots](./ToDoLite/Screenshots/screenshots.png) showcasing the successful execution of the program. Compile and submit your [pseudocode](./ToDoLite/pseudocode/ToDoLite.pseudocode), source code, and screenshots of the application executing the application.
 
-![](./ToDoLite/app/src/main/res/raw/screenshots.png)
+![](./ToDoLite/Screenshots/screenshots.png)
 
 ### Module 4: Portfolio Project Milestone
 
@@ -47,12 +47,18 @@ Build a photo gallery application that displays a grid of images  fetched from t
 Please ensure that your submission includes the following components:
 
 - [Source code file(s)](./PhotoViewer/) containing the program implementation.
-- Include [screenshots](./PhotoViewer/app/src/main/res/raw/screenshots.png) showcasing the successful execution of the program.
+- Include [screenshots](./PhotoViewer/Screenshots/screenshots.png) showcasing the successful execution of the program.
 - Compile and submit your [pseudocode](./PhotoViewer/PseudoCode_ProjectStructure/PhotoViewer_Pseudocode.md), source code, and  screenshots of executing the application.
 
 ![](./PhotoViewer/PseudoCode_ProjectStructure/PhotoViewer_Application_Structure.svg)
 
-![](./PhotoViewer/app/src/main/res/raw/screenshots.png)
+![](./PhotoViewer/PseudoCode_ProjectStructure/screenshots.png)
+
+## Module 7: Unit Converter Testing
+
+Create a unit conversion app that converts between different units  (e.g., temperature, length, weight). Write and execute unit tests using  the Android Testing Framework to ensure the accuracy of the conversion  calculations.
+
+
 
 
 
