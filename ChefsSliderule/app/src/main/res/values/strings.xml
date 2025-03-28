@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Chef\'s Slide Rule</string>
+    <string name="select_source_unit">Select source unit</string>
+    <string name="result">Result</string>
+    <string name="convert">Convert</string>
+    <string name="from">From</string>
+    <string name="temperature">Temperature</string>
+    <string name="volume">Volume</string>
+    <string name="weight">Weight</string>
+    <string name="swap_units">Swap units</string>
+    <string name="select_target_unit">Select target unit</string>
+    <string name="to">To</string>
+    <string name="enter_value">Enter value</string>
+    <string name="conversion_result">%1$s %2$s = %3$s %4$s</string>
+</resources>
