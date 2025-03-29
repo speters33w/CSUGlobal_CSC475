@@ -58,13 +58,13 @@ class ConversionTests {
     }
 
     @Test
-    fun testVolumeConversion() {
+    fun testCupToMilliliterConversion() {
         // Given
         every { conversionService.convertVolume(1.0, ConversionService.VolumeUnit.CUP, ConversionService.VolumeUnit.MILLILITER) } returns 236.588
         every { conversionService.formatResult(236.588) } returns "236.59 ml"
     
         // When
-        conversionViewModel.updateValue(1.0)
+        conversionViewModel.updateValue("1.0")
         conversionViewModel.updateFromUnit("CUP")
         conversionViewModel.updateToUnit("MILLILITER")
         conversionViewModel.updateConversionType("VOLUME")
@@ -81,6 +81,34 @@ class ConversionTests {
         assertEquals("MILLILITER", currentConversion?.toUnit)
         assertEquals(ConversionService.ConversionType.VOLUME, currentConversion?.conversionType)
     
+        // Verify that the conversion method was called with the correct parameters
+        verify { conversionService.convertVolume(1.0, ConversionService.VolumeUnit.CUP, ConversionService.VolumeUnit.MILLILITER) }
+    }
+
+    @Test
+    fun testVolumeConversion() {
+        // Given
+        every { conversionService.convertVolume(1.0, ConversionService.VolumeUnit.CUP, ConversionService.VolumeUnit.MILLILITER) } returns 236.588
+        every { conversionService.formatResult(236.588) } returns "236.59 ml"
+
+        // When
+        conversionViewModel.updateValue("1.0")
+        conversionViewModel.updateFromUnit("CUP")
+        conversionViewModel.updateToUnit("MILLILITER")
+        conversionViewModel.updateConversionType("VOLUME")
+
+        // Then
+        // Assert that the conversion result is correct
+        assertEquals("236.59 ml", conversionViewModel.conversionResult.value)
+
+        // Assert that the current conversion model is updated correctly
+        val currentConversion = conversionViewModel.currentConversion.value
+        assertNotNull(currentConversion)
+        assertEquals(1.0, currentConversion?.value)
+        assertEquals("CUP", currentConversion?.fromUnit)
+        assertEquals("MILLILITER", currentConversion?.toUnit)
+        assertEquals(ConversionService.ConversionType.VOLUME, currentConversion?.conversionType)
+
         // Verify that the conversion method was called with the correct parameters
         verify { conversionService.convertVolume(1.0, ConversionService.VolumeUnit.CUP, ConversionService.VolumeUnit.MILLILITER) }
     }

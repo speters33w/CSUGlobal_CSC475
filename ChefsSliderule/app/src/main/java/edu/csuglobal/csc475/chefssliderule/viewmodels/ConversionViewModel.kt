@@ -43,9 +43,10 @@ class ConversionViewModel(private val conversionService: ConversionService) : Vi
      * 
      * @param value The new value to convert
      */
-    fun updateValue(value: Double) {
+    fun updateValue(value: String) {
+        val parsedValue = parseInput(value)
         val current = _currentConversion.value ?: return
-        _currentConversion.value = current.copy(value = value)
+        _currentConversion.value = current.copy(value = parsedValue)
         performConversion()
     }
     
@@ -100,7 +101,7 @@ class ConversionViewModel(private val conversionService: ConversionService) : Vi
     /**
      * Performs the conversion based on the current conversion model
      */
-    private fun performConversion() {
+    fun performConversion() {
         val model = _currentConversion.value ?: return
         
         try {
@@ -108,22 +109,25 @@ class ConversionViewModel(private val conversionService: ConversionService) : Vi
                 ConversionService.ConversionType.VOLUME -> {
                     val fromUnit = ConversionService.VolumeUnit.valueOf(model.fromUnit)
                     val toUnit = ConversionService.VolumeUnit.valueOf(model.toUnit)
-                    conversionService.convertVolume(model.value, fromUnit, toUnit)
+                    val convertedValue = conversionService.convertVolume(model.value, fromUnit, toUnit)
+                    conversionService.formatVolumeResult(convertedValue)
                 }
                 ConversionService.ConversionType.WEIGHT -> {
                     val fromUnit = ConversionService.WeightUnit.valueOf(model.fromUnit)
                     val toUnit = ConversionService.WeightUnit.valueOf(model.toUnit)
-                    conversionService.convertWeight(model.value, fromUnit, toUnit)
+                    val convertedValue = conversionService.convertWeight(model.value, fromUnit, toUnit)
+                    conversionService.formatResult(convertedValue)
                 }
                 ConversionService.ConversionType.TEMPERATURE -> {
                     val fromUnit = ConversionService.TemperatureUnit.valueOf(model.fromUnit)
                     val toUnit = ConversionService.TemperatureUnit.valueOf(model.toUnit)
-                    conversionService.convertTemperature(model.value, fromUnit, toUnit)
+                    val convertedValue = conversionService.convertTemperature(model.value, fromUnit, toUnit)
+                    conversionService.formatResult(convertedValue)
                 }
             }
             
-            _conversionResult.value = conversionService.formatResult(result)
-            _errorMessage.value = "" // Changed from null to empty string
+            _conversionResult.value = result
+            _errorMessage.value = ""
         } catch (e: Exception) {
             _errorMessage.value = "Error performing conversion: ${e.message}"
             _conversionResult.value = ""
@@ -141,4 +145,20 @@ class ConversionViewModel(private val conversionService: ConversionService) : Vi
         )
         performConversion()
     }
+private fun parseInput(input: String): Double {
+    val mixedNumberRegex = """(-?\d+)-(\d+)/(\d+)""".toRegex()
+    val fractionRegex = """(-?\d+)/(\d+)""".toRegex()
+
+    return when {
+        mixedNumberRegex.matches(input) -> {
+            val (whole, numerator, denominator) = mixedNumberRegex.find(input)!!.destructured
+            whole.toDouble() + numerator.toDouble() / denominator.toDouble()
+        }
+        fractionRegex.matches(input) -> {
+            val (numerator, denominator) = fractionRegex.find(input)!!.destructured
+            numerator.toDouble() / denominator.toDouble()
+        }
+        else -> input.toDoubleOrNull() ?: 0.0
+    }
+}
 }

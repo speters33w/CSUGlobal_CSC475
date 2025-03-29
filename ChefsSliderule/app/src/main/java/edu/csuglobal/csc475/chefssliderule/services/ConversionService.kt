@@ -115,6 +115,24 @@ class ConversionService {
             value.toString()
         }
     }
+fun formatVolumeResult(value: Double): String {
+    val integerPart = value.toInt()
+    val fractionalPart = value - integerPart
+
+    return when {
+        fractionalPart < 0.063 -> integerPart.toString()
+        fractionalPart < 0.188 -> if (integerPart == 0) "\u215B" else "$integerPart\u215B"  // ⅛
+        fractionalPart < 0.292 -> if (integerPart == 0) "\u00BC" else "$integerPart\u00BC"  // ¼
+        fractionalPart < 0.354 -> if (integerPart == 0) "\u2153" else "$integerPart\u2153"  // ⅓
+        fractionalPart < 0.438 -> if (integerPart == 0) "\u215C" else "$integerPart\u215C"  // ⅜
+        fractionalPart < 0.563 -> if (integerPart == 0) "\u00BD" else "$integerPart\u00BD"  // ½
+        fractionalPart < 0.646 -> if (integerPart == 0) "\u215D" else "$integerPart\u215D"  // ⅝
+        fractionalPart < 0.709 -> if (integerPart == 0) "\u2154" else "$integerPart\u2154"  // ⅔
+        fractionalPart < 0.813 -> if (integerPart == 0) "\u00BE" else "$integerPart\u00BE"  // ¾
+        fractionalPart < 0.948 -> if (integerPart == 0) "\u215E" else "$integerPart\u215E"  // ⅞
+        else -> (integerPart + 1).toString()
+    }
+}
 
     /**
      * Round a double to a specific number of decimal places
