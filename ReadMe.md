@@ -11,7 +11,7 @@ Create a simple Android application that displays a "Hello, Android!" message on
 Please ensure that your submission includes the following components:
 
 - [Source code file(s)](./HelloAndroidCalculator) containing the program implementation.
-- Include [screenshots]((./HelloAndroidCalculator/Screenshots/screenshots.png) showcasing the successful execution of the program.
+- Include [screenshots](./HelloAndroidCalculator/Screenshots/screenshots.png) showcasing the successful execution of the program.
 
 ![](./HelloAndroidCalculator/Screenshots/screenshots.png)
 
@@ -42,13 +42,13 @@ Submit the [design document](./ToDone/design/Peters_Stephan_CSC475_CT4_ToDoneApp
 
 ### Module 5: Photo Gallery
 
-Build a photo gallery application that displays a grid of images  fetched from the device's storage or an online source. Implement basic  image loading and rendering functionalities, allowing users to view and  scroll through a collection of photos.
+Build a photo gallery application that displays a grid of images fetched from the device's storage or an online source. Implement basic image loading and rendering functionalities, allowing users to view and scroll through a collection of photos.
 
 Please ensure that your submission includes the following components:
 
 - [Source code file(s)](./PhotoViewer/) containing the program implementation.
 - Include [screenshots](./PhotoViewer/Screenshots/screenshots.png) showcasing the successful execution of the program.
-- Compile and submit your [pseudocode](./PhotoViewer/PseudoCode_ProjectStructure/PhotoViewer_Pseudocode.md), source code, and  screenshots of executing the application.
+- Compile and submit your [pseudocode](./PhotoViewer/PseudoCode_ProjectStructure/PhotoViewer_Pseudocode.md), source code, and screenshots of executing the application.
 
 ![](./PhotoViewer/PseudoCode_ProjectStructure/PhotoViewer_Application_Structure.svg)
 
@@ -56,9 +56,14 @@ Please ensure that your submission includes the following components:
 
 ## Module 7: Unit Converter Testing
 
-Create a unit conversion app that converts between different units  (e.g., temperature, length, weight). Write and execute unit tests using  the Android Testing Framework to ensure the accuracy of the conversion  calculations.
+Create a unit conversion app that converts between different units (e.g., temperature, length, weight). Write and execute [unit tests](./ChefsSliderule/app/src/test/java/edu/csuglobal/csc475/chefssliderule/viewmodels/ConversionViewModelTest.kt) using [[JUnit 5 and MockK](./ChefsSliderule/app/build.gradle.kts)] to ensure the accuracy of the conversion calculations.
 
+Please ensure that your submission includes the following components:
 
+- [Source code file(s)](./ChefsSliderule/app/) containing the program implementation.
+- [Screenshots](./ChefsSliderule/Screenshots/) showcasing the successful execution of the program.
+
+<img src="./ChefsSliderule/Screenshots/Screenshot_20250328-211241_Chef's Slide Rule.jpg" style="zoom:25%;" /> <img src="./ChefsSliderule/Screenshots/Screenshot_20250328-213704_Chef's Slide Rule.jpg" style="zoom:25%;" />
 
 
 
